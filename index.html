@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boult - Parental Monitoring Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.0"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>BOULT</h1>
+                <p>Monitoring</p>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="nav-item active" onclick="showSection('dashboard')">
+                        <span class="icon">📊</span> Dashboard
+                    </li>
+                    <li class="nav-item" onclick="showSection('calls')">
+                        <span class="icon">📞</span> Calls
+                    </li>
+                    <li class="nav-item" onclick="showSection('location')">
+                        <span class="icon">📍</span> Location
+                    </li>
+                    <li class="nav-item" onclick="showSection('device')">
+                        <span class="icon">📱</span> Device
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h1 id="page-title">Dashboard</h1>
+                <button class="btn-refresh" onclick="refreshData()">🔄 Refresh</button>
+            </header>
+
+            <section id="dashboard" class="section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📞</div>
+                        <h3>Call Logs</h3>
+                        <p class="stat-number" id="total-calls">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📍</div>
+                        <h3>Locations</h3>
+                        <p class="stat-number" id="total-locations">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📱</div>
+                        <h3>Device Status</h3>
+                        <p class="stat-number" id="device-status-text">--</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔋</div>
+                        <h3>Battery</h3>
+                        <p class="stat-number" id="battery-percent">0%</p>
+                    </div>
+                </div>
+
+                <div class="recent-section">
+                    <h2>Recent Calls</h2>
+                    <div id="recent-calls" class="list-items">
+                        <p class="loading">Loading...</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="calls" class="section">
+                <h2>Call Logs</h2>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Contact</th>
+                                <th>Number</th>
+                                <th>Type</th>
+                                <th>Duration</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calls-table-body">
+                            <tr><td colspan="6">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="location" class="section">
+                <h2>Location History</h2>
+                <div id="location-list" class="list-items">
+                    <p class="loading">Loading...</p>
+                </div>
+            </section>
+
+            <section id="device" class="section">
+                <h2>Device Status</h2>
+                <div id="device-status-list" class="list-items">
+                    <p class="loading">Loading...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
